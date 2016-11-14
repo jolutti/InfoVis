@@ -1,0 +1,100 @@
+---
+title: "Information Visualization Homework 1"
+author: "Andrei Sacuiu (955067), Johann Lutterodt (878253)"
+date: "13 November 2016"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Excercise 3
+
+Create 10 random values in the range of 0 and 10.
+
+```{r}
+r <- runif(10,0,10)
+r
+```
+## Excercise 4
+
+Name and explain briefly in your own words the three goals of visualizations. Make sure the
+differences between the goals are clearly described.
+
+1) Presentation
+
+Gather facts and the data to prove it, chose a template that make the data easy to understand and create a presentation that proves the stated facts.
+
+2) Confirmatory analysis
+
+Start from a hypothesis, examine the hypothesis, and visualize the data in order to confirm or reject the hypothesis
+
+3) Explanatory Analysis
+
+When having no hypothesis, a person can deduce a hypothesis by interactively analyzing the data and searching for trends and patterns within the visualizations.
+
+## Excercise 5
+
+a) Even though visualization is possible without a computer, today most visualizations are computer generated and some of them would be impossible to do without a computer. It helps as a computer science course as it has many applications in computer science as well, for example bench-marking performance of programs, viewing statistical data about network security, visualizing big data, etc.
+
+b) It makes sense to visualize the data as it makes it much easier to understand, find patterns, and reach conclusions this way than to look only at numbers.
+
+## Excercise 6
+
+a) Create a vector containing values from 0 to 50 with a distance of 0.5.
+
+```{r}
+v <- seq(0,50,0.5)
+```
+
+b) Calculate the square root for each of these values and add this vector to the other
+vector as a second column.
+```{r}
+v2 <- cbind(v,sqrt(v))
+```
+
+c) Visualize the result with the plot() function.
+```{r}
+plot(v2)
+```
+
+d) Calculate the logarithm (base 2 and 10) for each of the values calculated in a). 
+```{r}
+v_log2 <- log2(v)
+v_log10 <- log10(v)
+```
+
+
+e) Add the two logarithmic curves to your plot visualized in c). Use different colors for
+the curves. 
+```{r}
+plot(v2,type="l",col="red")
+lines(v_log10,col="green")
+lines(v_log2, col="blue")
+legend("topleft", legend=c("Sqrt of V","V Base 10", "V Base 2"),col=c("red","green", "blue"), lty=1)
+```
+
+##Excercise 7
+a) Create the following vector vec: $2^n$ with n $\in$ N{1,2,3,...,50}
+```{r}
+v_2_n <- 2^seq(1:50)
+```
+b) Create the following vector vec: $n^2$ with n $\in$ N{1,2,3,...,50} 
+```{r}
+v_n_2 <- seq(1:50)^2
+```
+c.a) Print the values
+```{r}
+v_2_n[v_2_n==v_n_2]
+```
+
+c.b) Print the index positions
+```{r}
+index_position <- which(v_2_n==v_n_2)
+index_position
+```
+c.c) Count the number of identical index positions
+```{r}
+length(index_position)
+```
